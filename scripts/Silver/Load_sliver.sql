@@ -114,7 +114,7 @@ BEGIN
                 SELECT TRIM(REPLACE(CID, 'NAS', '')) AS cst_key,
                        CASE WHEN BDATE > GETDATE() THEN NULL ELSE BDATE END AS cst_birth_date,
                        CASE WHEN trim(gen) = ''
-                                 OR gen IS NULL THEN 'N\A' WHEN TRIM(upper(gen)) = 'M' THEN 'Male' WHEN TRIM(upper(gen)) = 'F' THEN 'Female' ELSE TRIM(gen) END AS gen
+                                 OR gen IS NULL THEN 'N/A' WHEN TRIM(upper(gen)) = 'M' THEN 'Male' WHEN TRIM(upper(gen)) = 'F' THEN 'Female' ELSE TRIM(gen) END AS gen
                 FROM   bronze.erp_cust_az12;
                 SET @end_time = GETDATE();
                 PRINT '>> Load Duration ' + CAST (DATEDIFF(SECOND, @start_time, @end_time) AS VARCHAR) + ' Second..';
